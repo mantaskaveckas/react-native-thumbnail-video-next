@@ -1,14 +1,14 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from "react";
 import {
   View,
   TextInput,
   TouchableOpacity,
   Text,
   StyleSheet,
-} from 'react-native';
-import { Thumbnail } from 'react-native-thumbnail-video';
+} from "react-native";
+import { Thumbnail } from "react-native-thumbnail-video-next";
 
-const VIDEO = 'https://www.youtube.com/watch?v=lgj3D5-jJ74';
+const VIDEO = "https://www.youtube.com/watch?v=lgj3D5-jJ74";
 const TYPING_TIMEOUT = 700;
 
 class App extends PureComponent {
@@ -17,14 +17,16 @@ class App extends PureComponent {
   };
 
   typingTimeout = null;
-  handleChangeVideoUrl = url => {
+  handleChangeVideoUrl = (url) => {
     clearTimeout(this.typingTimeout);
 
-    this.typingTimeout = setTimeout(() =>
-      this.setState({
-        url: url,
-      }),
-    TYPING_TIMEOUT);
+    this.typingTimeout = setTimeout(
+      () =>
+        this.setState({
+          url: url,
+        }),
+      TYPING_TIMEOUT
+    );
   };
 
   render() {
@@ -40,10 +42,7 @@ class App extends PureComponent {
           />
         </View>
 
-        <Thumbnail
-          url={url}
-          blurRadius={1}
-        />
+        <Thumbnail url={url} blurRadius={1} />
       </View>
     );
   }
@@ -52,19 +51,19 @@ class App extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     marginTop: 20,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   formContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    flexDirection: "row",
     marginBottom: 20,
     marginHorizontal: 10,
   },
   input: {
     flex: 1,
-    borderColor: '#CCC',
+    borderColor: "#CCC",
     borderWidth: 1,
     fontSize: 15,
     padding: 10,

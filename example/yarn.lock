@@ -4445,7 +4445,7 @@ react-native-scripts@1.5.0:
     color "^2.0.1"
     lodash "^4.16.6"
 
-react-native-thumbnail-video@^0.1.1:
+react-native-thumbnail-video-next@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/react-native-thumbnail-video/-/react-native-thumbnail-video-0.1.1.tgz#184a4724aa2fe71902cf54ad93590fa122ad60bc"
 

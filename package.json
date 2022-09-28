@@ -1,19 +1,19 @@
 {
-  "name": "react-native-thumbnail-video",
+  "name": "react-native-thumbnail-video-next",
   "description": "Easily show thumbnails for videos",
   "version": "0.1.2",
   "author": {
-    "name": "Lucas Bento",
-    "email": "lucas.bsilva@outlook.com",
-    "url": "https://github.com/lucasbento"
+    "name": "Mantas Kaveckas",
+    "email": "mantas.kaveckas@gmail.com",
+    "url": "https://github.com/mantaskaveckas"
   },
-  "bugs": "https://github.com/lucasbento/react-native-thumbnail-video/issues",
-  "homepage": "https://github.com/lucasbento/react-native-thumbnail-video#readme",
+  "bugs": "https://github.com/mantaskaveckas/react-native-thumbnail-video-next/issues",
+  "homepage": "https://github.com/mantaskaveckas/react-native-thumbnail-video-next#readme",
   "license": "MIT",
   "main": "./src/index.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/lucasbento/react-native-thumbnail-video"
+    "url": "http://github.com/mantaskaveckas/react-native-thumbnail-video-next"
   },
   "keywords": [
     "react-native",
