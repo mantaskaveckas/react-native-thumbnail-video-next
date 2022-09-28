@@ -1,17 +1,16 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import {
   TouchableOpacity,
   ImageBackground,
   Image,
-  ViewPropTypes,
-  ImagePropTypes,
   Linking,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
+import { ViewPropTypes } from "deprecated-react-native-prop-types";
 
-import { DEFAULT_WIDTH, TYPES } from './constants';
-import { getVideoId } from '../helpers';
+import { DEFAULT_WIDTH, TYPES } from "./constants";
+import { getVideoId } from "../helpers";
 
 export default class Thumbnail extends PureComponent {
   constructor(props) {
@@ -26,35 +25,29 @@ export default class Thumbnail extends PureComponent {
     ...ImageBackground.propTypes,
     children: PropTypes.node,
     containerStyle: ViewPropTypes.style,
-    imageHeight: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
-    imageWidth: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
-    iconStyle: Image.propTypes.style,
+    imageHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    imageWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    iconStyle: PropTypes.any,
     onPress: PropTypes.func,
     onPressError: PropTypes.func,
     style: ViewPropTypes.style,
     type: PropTypes.oneOf(Object.keys(TYPES)),
     url: PropTypes.string.isRequired,
-    showPlayIcon: PropTypes.bool
+    showPlayIcon: PropTypes.bool,
   };
 
   static defaultProps = {
-    type: 'high',
+    type: "high",
     imageHeight: 200,
     imageWidth: DEFAULT_WIDTH,
     onPressError: () => {},
-    showPlayIcon: true
+    showPlayIcon: true,
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const videoId = getVideoId(nextProps.url);
 
-    if(videoId !== prevState.videoId){
+    if (videoId !== prevState.videoId) {
       return { videoId };
     }
 
@@ -80,21 +73,25 @@ export default class Thumbnail extends PureComponent {
       return onPress(url);
     }
 
-    Linking.canOpenURL(url).then((supported) => {
-      if (!supported) {
-        return;
-      }
+    Linking.canOpenURL(url)
+      .then((supported) => {
+        if (!supported) {
+          return;
+        }
 
-      return Linking.openURL(url);
-    }).catch(onPressError);
+        return Linking.openURL(url);
+      })
+      .catch(onPressError);
   };
 
   render() {
     const { videoId } = this.state;
 
-    if(!videoId){
-      if (process.env.NODE_ENV !== 'production') {
-        console.warn(`Invalid "url" could not extract videoId from "${this.props.url}"`);
+    if (!videoId) {
+      if (process.env.NODE_ENV !== "production") {
+        console.warn(
+          `Invalid "url" could not extract videoId from "${this.props.url}"`
+        );
       }
 
       return null;
@@ -127,21 +124,16 @@ export default class Thumbnail extends PureComponent {
               height: imageHeight,
             },
           ]}
-          testId='thumbnail-image-background'
+          testId="thumbnail-image-background"
           {...props}
         >
-        {
-          showPlayIcon ? (
+          {showPlayIcon ? (
             <Image
-              source={require('../assets/play.png')}
+              source={require("../assets/play.png")}
               style={[styles.playIcon, iconStyle]}
-              testId='thumbnail-image'
+              testId="thumbnail-image"
             />
-          ) : (
-            null
-          )
-        }
-
+          ) : null}
 
           {children}
         </ImageBackground>
@@ -152,10 +144,10 @@ export default class Thumbnail extends PureComponent {
 
 const styles = StyleSheet.create({
   imageContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   playIcon: {
-    tintColor: 'white',
+    tintColor: "white",
   },
 });
